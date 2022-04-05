@@ -3,6 +3,7 @@ export default class ProductCard {
   constructor(product) {
     this.elem = this.createCard(product);
     this.handler(this.elem, product);
+    this.product = product;
   }
 
   createCard(product) {
@@ -27,7 +28,7 @@ export default class ProductCard {
     let btn = dom.querySelector('.card__button');
     btn.addEventListener('click', (event) => {
       let genEvent = new CustomEvent("product-add", {
-        detail: product.id,
+        detail: this.product.id,
         bubbles: true
       });
       dom.dispatchEvent(genEvent);
